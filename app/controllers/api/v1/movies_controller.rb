@@ -11,16 +11,14 @@ class Api::V1::MoviesController < ApplicationController
   end
 
   def create
-      movie = Movie.find_or_initialize_by!(params.except(:api_id))
-      movie.id = params[:api_id]
-      movie.save!
+      movie = Movie.find_or_create_by!(movie_params)
       render json: movie
   end
 
 private
 
   def movie_params
-      params.require(:movie).permit(:title, :poster_path, :overview)
+      params.require(:movie).permit(:title, :poster_path, :overview, :api_id)
   end
 
 
