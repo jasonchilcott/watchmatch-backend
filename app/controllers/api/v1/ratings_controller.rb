@@ -2,18 +2,24 @@ class Api::V1::RatingsController < ApplicationController
   #before_action :authorized
 
   def index
-      reviews = Rating.all
+      ratings = Rating.all
       render json: ratings
   end
   
   def show
-      rating = Rating.find_by(rating_params)
+      rating = Rating.find(params[:id])
       render json: rating
   end
 
   def create
-      rating = Rating.upsert(rating_params)
+      rating = Rating.create!(rating_params)
       render json: rating
+  end
+
+  def update
+    rating = Rating.find(params[:id])
+    rating.update(rating_params)
+    render json: rating
   end
 
 
