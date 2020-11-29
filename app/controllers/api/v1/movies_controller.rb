@@ -6,7 +6,7 @@ class Api::V1::MoviesController < ApplicationController
   end
 
   def show
-      movie = Movie.find(movie_params)
+      movie = Movie.find(params[:id])
       render json: movie
   end
 
