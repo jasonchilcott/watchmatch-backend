@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_02_020038) do
+ActiveRecord::Schema.define(version: 2020_12_02_064123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 2020_12_02_020038) do
     t.string "avatar_url"
     t.string "one_line"
     t.text "detailed_bio"
+    t.string "twitter"
+    t.string "instagram"
   end
 
   add_foreign_key "ratings", "movies"
