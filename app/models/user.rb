@@ -4,5 +4,5 @@ class User < ApplicationRecord
   has_many :movies, through: :ratings
   
   validates :username, uniqueness: { case_sensitive: false }
-  validates :password, presence: true
+  validates :password, presence: true, on: :create
 end
