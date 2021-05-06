@@ -11,7 +11,9 @@ class Api::V1::MoviesController < ApplicationController
   end
 
   def create
-      movie = Movie.find_or_create_by!(movie_params)
+      movie = Movie.create_with(
+        movie_params
+      ).find_or_create_by!(api_id: params.dig(:movie, :api_id))
       render json: movie
   end
 
